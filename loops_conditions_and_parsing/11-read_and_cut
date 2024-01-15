@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#Only display username, userid, and home directory for /etc/passwd
+while read -r line
+do
+cut -d: -f 1,3,6 "$line"
+done < /etc/passwd
