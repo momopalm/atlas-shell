@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#Telling the story of /etc/passwd with the while loop and IFS.
+while IFS= read -r line
+do
+muser=$(echo "$line" | cut -d: -f 1)
+mgid=$(echo "$line" | cut -d: -f 4)
+mdir=$(echo "$line" | cut -d: -f 6)
+mcomsh=$(echo "$line" | cut -d: -f 7)
+muid=$(echo "$line" | cut -d: -f 3)
+mpass=$(echo "$line" | cut -d: -f 2)
+muidinfo=$(echo "$line" | cut -d: -f 5)
+echo "The user $muser is part of the $mgid gang, lives in $mdir and rides $mcomsh. $muid's place is protected by the passcode $mpass, more info about the user here: $muidinfo"
+done < /etc/passwd
